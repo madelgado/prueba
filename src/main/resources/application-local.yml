@@ -12,5 +12,5 @@ springdoc:
     path: "/prueba-tecnica/swagger-ui.html"
 
 unsplash:
-  endPoint: "https://api.unsplash.com/collections?per_page=50"
+  endPoint: "https://api.unsplash.com/collections?per_page=100"
   client-id: "9wLpcq3rw6ZAlC4BM84_mkbjWmCT57OHHJoWW2mt4xQ"
