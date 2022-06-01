@@ -1,5 +1,6 @@
 package com.microservice.pruebatecnica.service.implementation;
 
+import com.microservice.pruebatecnica.model.constants.CollectionConstants;
 import com.microservice.pruebatecnica.model.dtos.CollectionData;
 import com.microservice.pruebatecnica.service.IFilterService;
 import com.microservice.pruebatecnica.util.RestApiCallUtils;
@@ -28,10 +29,10 @@ import java.util.stream.Stream;
     }
 
     private List<CollectionData> filteringData (Flux<CollectionData> collectionDataFlux, Map<String, String> mapFilters) {
-        collectionDataFlux = collectionDataFlux.filterWhen(d -> check(d.getTitle(), mapFilters.getOrDefault("title", null)));
-        collectionDataFlux = collectionDataFlux.filterWhen(d -> check(d.getId(), mapFilters.getOrDefault("id", null)));
+        collectionDataFlux = collectionDataFlux.filterWhen(d -> check(d.getTitle(), mapFilters.getOrDefault(CollectionConstants.TITLE, null)));
+        collectionDataFlux = collectionDataFlux.filterWhen(d -> check(d.getId(), mapFilters.getOrDefault(CollectionConstants.ID, null)));
         collectionDataFlux = collectionDataFlux.filterWhen(
-                d -> check(d.getDescription(), mapFilters.getOrDefault("description", null)));
+                d -> check(d.getDescription(), mapFilters.getOrDefault(CollectionConstants.DESCRIPTION, null)));
         collectionDataFlux = collectionDataFlux.filterWhen(
                 d -> check(d.getPhotoId(), mapFilters.getOrDefault("cover_photo.id", null)));
         return collectionDataFlux.collectList().block();
